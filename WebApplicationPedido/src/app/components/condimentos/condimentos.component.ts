@@ -8,21 +8,24 @@ import { Condimento } from 'src/app/Condimento';
   templateUrl: './condimentos.component.html',
   styleUrls: ['./condimentos.component.css']
 })
-
 export class CondimentosComponent implements OnInit {
+
   formulario: any;
   tituloFormulario: string = '';
   constructor(private condimentosService: CondimentosService) { }
   ngOnInit(): void {
     this.tituloFormulario = 'Novo Condimento';
     this.formulario = new FormGroup({
+      id: new FormControl(null),
       nome: new FormControl(null),
       quantidade: new FormControl(null)
     })
-  } enviarFormulario(): void {
+  }
+
+  enviarFormulario(): void {
     const condimento: Condimento = this.formulario.value;
     this.condimentosService.cadastrar(condimento).subscribe(result => {
-      alert('Carro inserido com sucesso.');
+      alert('Condimento inserido com sucesso.');
     })
   }
 }
