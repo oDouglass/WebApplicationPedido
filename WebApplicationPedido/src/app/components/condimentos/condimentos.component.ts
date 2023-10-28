@@ -23,7 +23,7 @@ export class CondimentosComponent implements OnInit {
   }
 
   enviarFormulario(): void {
-    const condimento: Condimento = this.formulario.value;
+    const condimento : Condimento = this.formulario.value;
     this.condimentosService.cadastrar(condimento).subscribe(result => {
       alert('Condimento inserido com sucesso.');
     })
